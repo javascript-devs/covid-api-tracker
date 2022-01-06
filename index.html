@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>covid-19 tracker</title>
+  </head>
+  <body style="background-color: aquamarine">
+    <h1>Covid-19 tracker</h1>
+    <p style="color: #800000; background-color: green" id="content"></p>
+    <script>
+      function fetchingApi() {
+        fetch("https://data.covid19india.org/v4/min/data.min.json")
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            // data variable stores the data returned by api
+            var showData = document.getElementById("content");
+            showData.innerHTML =
+              "Total no. of vaccinated people in my district: " +
+              data.UP.districts.Prayagraj.total.vaccinated1;
+          });
+      }
+      fetchingApi();
+    </script>
+  </body>
+</html>
